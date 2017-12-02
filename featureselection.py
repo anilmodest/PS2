@@ -15,11 +15,19 @@ import datacleaner
 print('hi')
 
 stock = pd.read_csv("testData.csv")
+'''
 stock = stock.drop(['sr_No', 'Ticker', 'Company', 'sector', 'industry','country','P_S_Ratio','P_B_Ratio','P_C_Ratio'
-         ,'P_C_Ratio', 'Insider_Trans', 'Insider_Own', 'Inst_Own','Inst_Trans','Float_Short','Perf_Quart','Perf_Half', 'Recom', 'Float'],axis=1)
+         ,'P_C_Ratio', 'Insider_Trans', 'Insider_Own', 'Inst_Own','Inst_Trans','Float_Short','Perf_Quart','Perf_Half', 'Recom', 'Float'
+                       , 'ATR', 'SMA20', 'SMA50', 'SMA200', '52W_High', '52W_Low', 'RSI', 'Price.1', 'Volatility_Month'
+                    ],axis=1)
+                    
+'''
 
+stock = stock[['market_Cap','P_E_Ratio','Price','ROE','Dividend','Beta','Perf_YTD']]
+print(stock)
 stock.head()
 datacleaner.dataCleaner(stock)
+
 
 # Looking for nulls
 print(stock.isnull().any())
