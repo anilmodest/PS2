@@ -42,7 +42,7 @@ class FeatureRanker:
     def extracttargetvariables(self, filtered_data):
         Y = filtered_data[self.plot_by_feature].values
         # Drop plot by variable from selection and create a matrix out of the stock data
-        ds = filtered_data.drop([self.plot_by_feature], axis=1)
+        filtered_data = filtered_data.drop([self.plot_by_feature], axis=1)
         X = filtered_data.as_matrix()
         # extract the column/feature names into a list "colnames"
         colnames = filtered_data.columns
