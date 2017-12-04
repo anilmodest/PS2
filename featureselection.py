@@ -14,7 +14,7 @@ import datacleaner
 
 print('hi')
 
-stock = pd.read_csv("testData.csv")
+stock = pd.read_csv("testData.csv", nrows=10)
 '''
 stock = stock.drop(['sr_No', 'Ticker', 'Company', 'sector', 'industry','country','P_S_Ratio','P_B_Ratio','P_C_Ratio'
          ,'P_C_Ratio', 'Insider_Trans', 'Insider_Own', 'Inst_Own','Inst_Trans','Float_Short','Perf_Quart','Perf_Half', 'Recom', 'Float'
@@ -44,7 +44,7 @@ with sns.plotting_context("notebook",font_scale=2.5):
                  hue='Beta', palette='afmhot',size=6)
 g.set(xticklabels=[]);
 '''
-plt.show()
+
 
 
 str_list = [] # empty list to contain columns with strings (words)
@@ -63,9 +63,9 @@ sns.heatmap(house_num.astype(float).corr(),linewidths=0.25,vmax=1.0, square=True
 
 
 
-# First extract the target variable which is our House prices
+# First extract the target variable which is our Beta
 Y = stock.Beta.values
-# Drop price from the house dataframe and create a matrix out of the house data
+# Drop Beta from the stock dataframe and create a matrix out of the stock data
 stock = stock.drop(['Beta'], axis=1)
 X = stock.as_matrix()
 # Store the column/feature names into a list "colnames"
